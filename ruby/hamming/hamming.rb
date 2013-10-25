@@ -1,11 +1,8 @@
 class Hamming
 
-  def self.compute(source, compare)
-    distance = 0
-    source.chars.zip(compare.chars).each do |lhs, rhs|
-      break if rhs.nil?
-      distance += 1 if lhs != rhs
+  def self.compute(original, mutation)
+    original.chars.zip(mutation.chars).count do |parent, child|
+      parent != child && !parent.nil? && !child.nil?
     end
-    distance
   end
 end
