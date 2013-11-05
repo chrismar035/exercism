@@ -1,8 +1,15 @@
 class Hamming
 
   def self.compute(original, mutation)
-    original.chars.zip(mutation.chars).count do |parent, child|
-      parent != child && !parent.nil? && !child.nil?
+    sequence(original, mutation).count do |strand_one, strand_two|
+      strand_one != strand_two && !strand_one.nil? && !strand_two.nil?
     end
   end
+
+  private
+
+    def self.sequence(original, mutation)
+      original.chars.zip(mutation.chars)
+    end
 end
+
