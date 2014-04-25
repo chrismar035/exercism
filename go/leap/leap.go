@@ -1,11 +1,16 @@
 package leap
 
 func IsLeapYear(year int) bool {
-    if year%4 != 0 {
-        return false
-    }
-    if year%100 == 0 && year%400 != 0 {
-        return false
-    }
-    return true
+	switch {
+	case !divisibleBy(4, year):
+		return false
+	case divisibleBy(100, year) && !divisibleBy(400, year):
+		return false
+	}
+	return true
 }
+
+func divisibleBy(denominator int, numerator int) bool {
+	return (numerator % denominator) == 0
+}
+
