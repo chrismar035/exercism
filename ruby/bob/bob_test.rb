@@ -1,7 +1,9 @@
+#!/usr/bin/env ruby
+gem 'minitest', '>= 5.0.0'
 require 'minitest/autorun'
 require_relative 'bob'
 
-class BobTest < MiniTest::Unit::TestCase
+class BobTest < Minitest::Test
   def bob
     ::Bob.new
   end
@@ -23,7 +25,7 @@ class BobTest < MiniTest::Unit::TestCase
 
   def test_shouting_gibberish
     skip
-    remark = ('A'..'Z').to_a.shuffle[0, 10].join
+    remark = ('A'..'Z').to_a.sample(10).join
     assert_equal 'Whoa, chill out!', bob.hey(remark), feedback(remark)
   end
 
@@ -41,7 +43,7 @@ class BobTest < MiniTest::Unit::TestCase
 
   def test_asking_gibberish
     skip
-    remark = ('a'..'z').to_a.shuffle[0, 10].join << '?'
+    remark = ('a'..'z').to_a.sample(10).join << '?'
     assert_equal 'Sure.', bob.hey(remark), feedback(remark)
   end
 

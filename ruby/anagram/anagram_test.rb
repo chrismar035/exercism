@@ -1,7 +1,9 @@
+#!/usr/bin/env ruby
+gem 'minitest', '>= 5.0.0'
 require 'minitest/autorun'
 require_relative 'anagram'
 
-class AnagramTest < MiniTest::Unit::TestCase
+class AnagramTest < Minitest::Test
   def test_no_matches
     detector = Anagram.new('diaper')
     assert_equal [], detector.match(%w(hello world zombies pants))

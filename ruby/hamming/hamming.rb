@@ -20,4 +20,3 @@ class Hamming
       not(strand_one.nil? || strand_two.nil?)
     end
 end
-
