@@ -26,7 +26,6 @@ func ToRomanNumeral(arabic int) (string, error) {
 
 	var wg sync.WaitGroup
 	wire := make(chan OutPacket)
-
 	arabics := strconv.Itoa(arabic)
 
 	for i, char := range arabics {
@@ -47,9 +46,7 @@ func ToRomanNumeral(arabic int) (string, error) {
 	}()
 
 	results := collectPackets(wire)
-
 	sort.Sort(ByOrder(results))
-
 	return concatValues(results), nil
 }
 
